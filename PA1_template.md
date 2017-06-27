@@ -124,8 +124,6 @@ qplot(x = steps, data = steps_per_day_imputed, binwidth = 1000)
 
 
 ```r
-library(knitr)
-
 median_step_imputed <- steps_per_day_imputed$steps %>% median()
 mean_step_imputed   <- steps_per_day_imputed$steps %>% mean()
 
@@ -138,15 +136,16 @@ impute_change <- tribble(
   select(`Statistic` = stat, `Pre Impute Value` = pre_impute_val,
          `Post Impute Value` = post_impute_val, `Difference` = diff)
 
-kable(impute_change, row.names = FALSE)
+impute_change
 ```
 
-
-
-Statistic    Pre Impute Value   Post Impute Value   Difference
-----------  -----------------  ------------------  -----------
-mean                  9354.23            10766.19    1411.9592
-median               10395.00            10766.19     371.1887
+```
+# A tibble: 2 x 4
+  Statistic `Pre Impute Value` `Post Impute Value` Difference
+      <chr>              <dbl>               <dbl>      <dbl>
+1      mean            9354.23            10766.19  1411.9592
+2    median           10395.00            10766.19   371.1887
+```
 
 After imputing, the mean increased considerably. Also the histogram became
 more normalized. Missing values were decreasing the mean and median because some 

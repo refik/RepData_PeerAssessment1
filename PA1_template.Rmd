@@ -95,9 +95,7 @@ steps_per_day_imputed <- activity_imputed %>%
 qplot(x = steps, data = steps_per_day_imputed, binwidth = 1000)
 ```
 
-```{r basic_step_stat_imputed}
-library(knitr)
-
+```{r basic_step_stat_imputed,comment=""}
 median_step_imputed <- steps_per_day_imputed$steps %>% median()
 mean_step_imputed   <- steps_per_day_imputed$steps %>% mean()
 
@@ -110,7 +108,7 @@ impute_change <- tribble(
   select(`Statistic` = stat, `Pre Impute Value` = pre_impute_val,
          `Post Impute Value` = post_impute_val, `Difference` = diff)
 
-kable(impute_change, row.names = FALSE)
+impute_change
 ```
 
 After imputing, the mean increased considerably. Also the histogram became
